@@ -29,12 +29,21 @@ function App() {
     <div className="App">
       <Header infosRestaurant={data} />
 
-      <div className="content">
-        <div className="content-center">
-          {data.categories.length > 0 &&
-            data.categories.map((item, index) => {
-              return <Category key={index} item={item} />;
+      <div className="content-center">
+        <div className="content">
+          <div className="content-category">
+            {data.categories.map((item, index) => {
+              return (
+                data.categories[index].meals.length > 0 && (
+                  <Category key={index} item={item} />
+                )
+              );
             })}
+          </div>
+          <div className="basket">
+            <p>valider votre panier</p>
+            <p>votre panier est vide</p>
+          </div>
         </div>
       </div>
     </div>
