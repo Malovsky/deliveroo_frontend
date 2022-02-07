@@ -1,3 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Roboto", sans-serif;
+}
+
+.header-container-center,
+.infos-restaurant-container-center {
+  margin: 0 auto;
+  width: 96vw;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: row;
+}
+
+.header-container-center {
+  height: 100%;
+  align-items: center;
+}
+
+header {
+  height: 3rem;
+  height: 60px;
+  display: block;
+  align-items: center;
+  border-bottom: 1px solid #e9ebeb;
+}
+
+.logo {
+  height: 90%;
 }
