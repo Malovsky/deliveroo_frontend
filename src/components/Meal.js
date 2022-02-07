@@ -1,5 +1,4 @@
 const Meal = ({ meal }) => {
-  console.log("meal frome meal.js : ", meal);
   return (
     <div className="menu-item">
       <div className="menu-card">
