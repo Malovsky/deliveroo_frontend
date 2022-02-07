@@ -15,7 +15,7 @@ const Meal = ({ meal }) => {
             <img
               className="menu-item-photo"
               src={meal.picture}
-              alt="Photo meal"
+              alt={meal.title}
             />
           </div>
         )}
