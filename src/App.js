@@ -1,29 +1,12 @@
 import "./App.css";
 import axios from "axios";
 import Header from "./components/Header";
+import Category from "./components/Category";
 import { useState, useEffect } from "react";
 
-// https://deliveroo-back-kevin.herokuapp.com
-
 function App() {
-  const [data, setData] = useState();
+  const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-
-  // fetch() version
-  // useEffect(async () => {
-  //   try {
-  //     const response = await fetch(
-  //       "https://deliveroo-back-kevin.herokuapp.com"
-  //     );
-  //     const data = await response.json();
-  //     setData(data);
-  //     setIsLoading(false);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }, []);
-
-  // VS
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,12 +23,20 @@ function App() {
     fetchData();
   }, []);
 
-  console.log(data);
-
-  return (
+  return isLoading ? (
+    <span>En cours de chargement</span>
+  ) : (
     <div className="App">
-      <Header />
-      <p>coucou</p>
+      <Header infosRestaurant={data} />
+
+      <div className="content">
+        <div className="content-center">
+          {data.categories.length > 0 &&
+            data.categories.map((item, index) => {
+              return <Category key={index} item={item} />;
+            })}
+        </div>
+      </div>
     </div>
   );
 }
