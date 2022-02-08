@@ -2,11 +2,13 @@ import "./App.css";
 import axios from "axios";
 import Header from "./components/Header";
 import Category from "./components/Category";
+import Cart from "./components/Cart";
 import { useState, useEffect } from "react";
 
 function App() {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,15 +37,17 @@ function App() {
             {data.categories.map((item, index) => {
               return (
                 data.categories[index].meals.length > 0 && (
-                  <Category key={index} item={item} />
+                  <Category
+                    key={index}
+                    item={item}
+                    cart={cart}
+                    setCart={setCart}
+                  />
                 )
               );
             })}
           </div>
-          <div className="basket">
-            <p>valider votre panier</p>
-            <p>votre panier est vide</p>
-          </div>
+          <Cart cart={cart} setCart={setCart} />
         </div>
       </div>
     </div>
